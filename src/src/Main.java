@@ -1,13 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
+        ShipmentOrder[] orders = new ShipmentOrder[] {
+                new DomesticCourierShipment("DOM-100", "Anna Kowalska", 120, 35.0, true, 8.5, false),
+                new DomesticCourierShipment("DOM-101", "Piotr Nowak", 420, 40.0, false, 14.0, true),
+                new PickupPointShipment("PCK-200", "Marta Zielinska", 55, 22.0, false, "M", true),
+                new PickupPointShipment("PCK-201", "Jan Malinowski", 30, 19.0, true, "S", false),
+                new InternationalShipment("INT-300", "TechNova Sp. z o.o.", 1350, 110.0, true, "Germany", true, false),
+                new InternationalShipment("INT-301", "SoftLine S.A.", 2100, 140.0, false, "Spain", true, true)
+        };
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        for (ShipmentOrder order : orders) {
+            order.processOrder();
+            System.out.println(order.buildSummaryLine());
+            System.out.println();
+        }
     }
 }
